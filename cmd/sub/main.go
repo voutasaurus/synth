@@ -61,4 +61,5 @@ func (s *server) subscribe(subject string, fn func(m *nats.Msg)) {
 }
 
 func (s *server) serveSubject(m *nats.Msg) {
+	s.log.Println(m.Subject, m.Reply, string(m.Data))
 }

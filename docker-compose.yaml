@@ -1,0 +1,26 @@
+version: '2'
+
+networks:
+  default:
+
+services:
+
+  synthpub:
+    image: synthpub
+    container_name: synthpub.synth
+    environment:
+      - SYNTH_NATS_URI=gnats.synth:4222
+
+  synthsub:
+    image: synthsub
+    container_name: synthsub.synth
+    environment:
+      - SYNTH_NATS_URI=gnats.synth:4222
+
+  nats:
+    image: nats:latest
+    ports:
+      - 4222:4222
+      - 8222:8222
+      - 6222:6222
+    container_name: gnats.synth
